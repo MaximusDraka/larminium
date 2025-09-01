@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact - My Site{% endblock %}
+
+{% block content %}
+
+<!-- Contact Header -->
+<div class="text-center mb-5">
+  <h1 class="display-5 fw-bold">Get in Touch</h1>
+  <p class="lead text-muted">I'd love to hear from you — let's connect.</p>
+</div>
+
+<!-- Social Media Icons -->
+<div class="text-center mb-5">
+  <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="me-4 text-reset">
+    <i class="fab fa-linkedin fa-2x"></i>
+  </a>
+  <a href="https://github.com/yourprofile" target="_blank" class="me-4 text-reset">
+    <i class="fab fa-github fa-2x"></i>
+  </a>
+  <a href="https://twitter.com/yourprofile" target="_blank" class="me-4 text-reset">
+    <i class="fab fa-twitter fa-2x"></i>
+  </a>
+  <a href="mailto:your@email.com" class="text-reset">
+    <i class="fas fa-envelope fa-2x"></i>
+  </a>
+</div>
+
+<hr class="my-5"/>
+
+<!-- Contact Info Section -->
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <ul class="list-group list-group-light">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <i class="fas fa-envelope me-3"></i>
+        <span>your@email.com</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <i class="fas fa-phone-alt me-3"></i>
+        <span>+33 6 12 34 56 78</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <i class="fas fa-map-marker-alt me-3"></i>
+        <span>Paris, France</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+{% endblock %}
