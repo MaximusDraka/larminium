@@ -13,7 +13,7 @@ def about_me():
 
 @app.route("/humor")
 def humor():
-    humor_folder = os.path.join(app.static_folder, "images", "humor")
+    humor_folder = os.path.join(app.static_folder, "img", "humor")
     images = [
         f"images/humor/{filename}"
         for filename in os.listdir(humor_folder)
