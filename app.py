@@ -15,7 +15,7 @@ def about_me():
 def humor():
     humor_folder = os.path.join(app.static_folder, "img", "humor")
     images = [
-        f"images/humor/{filename}"
+        f"img/humor/{filename}"
         for filename in os.listdir(humor_folder)
             if filename.lower().endswith((".png", ".jpg", ".jpeg", ".webp", ".gif"))
     ]
