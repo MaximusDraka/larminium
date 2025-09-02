@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Humor - My Site{% endblock %}
+
+{% block content %}
+
+<div class="text-center mb-5">
+  <h1 class="display-5 fw-bold">Laughter is Data for the Soul</h1>
+  <p class="lead text-muted">Some lighthearted moments to keep things fun.</p>
+</div>
+
+<!-- Carousel -->
+<div id="humorCarousel" class="carousel slide carousel-fade" data-mdb-ride="carousel" data-mdb-interval="5000">
+  <div class="carousel-inner">
+
+    {% for image in images %}
+    <div class="carousel-item {% if loop.first %}active{% endif %}">
+      <img src="{{ url_for('static', filename=image) }}" class="d-block w-100 rounded shadow-4" alt="Meme {{ loop.index }}">
+    </div>
+    {% endfor %}
+
+  </div>
+
+  <!-- Controls -->
+  <button class="carousel-control-prev" type="button" data-mdb-target="#humorCarousel" data-mdb-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-mdb-target="#humorCarousel" data-mdb-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+{% endblock %}

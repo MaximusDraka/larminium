@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block title %}About Me - My Site{% endblock %}
+
+{% block content %}
+
+<!-- Header -->
+<div class="text-center mb-5">
+  <h1 class="display-5 fw-bold">About Me</h1>
+  <p class="lead text-muted">Curious. Creative. Analytical. I'm passionate about solving problems with code and data.</p>
+</div>
+
+<!-- Experience Section -->
+<h2 class="mb-3">Experience</h2>
+<div class="table-responsive mb-5">
+  <table class="table align-middle">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">Logo</th>
+        <th scope="col">Company</th>
+        <th scope="col">Role</th>
+        <th scope="col">Years</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img src="/img/website/company1.jpg" alt="Company 1" style="width: 40px;"></td>
+        <td>Company One</td>
+        <td>Data Analyst</td>
+        <td>2023 – Present</td>
+      </tr>
+      <tr>
+        <td><img src="/img/website/company2.png" alt="Company 2" style="width: 40px;"></td>
+        <td>Freelance</td>
+        <td>Business Analyst</td>
+        <td>2021 – 2023</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Education Section -->
+<h2 class="mb-3">Education</h2>
+<ul class="list-group list-group-light mb-5">
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <strong>Master’s in Data Science</strong>
+    <span class="text-muted">University of Paris – 2020</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <strong>Bachelor’s in Economics</strong>
+    <span class="text-muted">Université Lyon II – 2018</span>
+  </li>
+</ul>
+
+<!-- Skills Section -->
+<h2 class="mb-3">Skills</h2>
+<div class="mb-5">
+  <span class="badge bg-primary me-2 mb-2">Python</span>
+  <span class="badge bg-success me-2 mb-2">SQL</span>
+  <span class="badge bg-warning text-dark me-2 mb-2">Flask</span>
+  <span class="badge bg-info text-dark me-2 mb-2">Pandas</span>
+  <span class="badge bg-secondary me-2 mb-2">Tableau</span>
+  <span class="badge bg-dark me-2 mb-2">Zapier</span>
+  <span class="badge bg-danger me-2 mb-2">Git</span>
+</div>
+
+<!-- Projects Section -->
+<h2 class="mb-3">Projects</h2>
+<div class="row mb-5">
+  <div class="col-md-4 mb-4">
+    <div class="card h-100 shadow-3">
+      <div class="card-body">
+        <h5 class="card-title">Client Dashboard</h5>
+        <p class="card-text">Built an interactive dashboard using Flask, Chart.js, and MDBootstrap to visualize business KPIs in real-time.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-4">
+    <div class="card h-100 shadow-3">
+      <div class="card-body">
+        <h5 class="card-title">Social Automation Bot</h5>
+        <p class="card-text">Automated LinkedIn post scheduling using Python + Zapier + Google Sheets integration.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-4">
+    <div class="card h-100 shadow-3">
+      <div class="card-body">
+        <h5 class="card-title">Flask Blog CMS</h5>
+        <p class="card-text">Created a lightweight content management system with Markdown editing and tag-based routing.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Testimonials Section -->
+<h2 class="mb-3">Testimonials</h2>
+<div class="row">
+  <div class="col-md-6 mb-4">
+    <div class="card h-100 shadow-1-strong">
+      <div class="card-body">
+        <div class="d-flex align-items-center mb-3">
+          <img src="https://randomuser.me/api/portraits/men/31.jpg" alt="John" class="rounded-circle me-3" width="50">
+          <div>
+            <h6 class="fw-bold mb-0">John Doe</h6>
+            <small class="text-muted">CEO, Acme Inc.</small>
+          </div>
+        </div>
+        <p class="card-text">“Tom brought structure, clarity, and automation to our reporting — it saved us hours every week.”</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-4">
+    <div class="card h-100 shadow-1-strong">
+      <div class="card-body">
+        <div class="d-flex align-items-center mb-3">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Jane" class="rounded-circle me-3" width="50">
+          <div>
+            <h6 class="fw-bold mb-0">Jane Smith</h6>
+            <small class="text-muted">Project Manager, DataCo</small>
+          </div>
+        </div>
+        <p class="card-text">“Smart, communicative, and fast. He delivered even more than what we asked for.”</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
