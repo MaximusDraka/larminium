@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %}Introduction - Larminium{% endblock %}
+
+{% block content %}
+
+<div class="mb-5">
+  <h1 class="display-5 fw-bold"><span class="text-muted">Larminians ></span> Introduction</h1>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col mb-4">
+    <div class="card h-100 shadow-1-strong">
+      <div class="card-body">       
+        <p class="card-text" style="text-align: center;"><br/><br/>As citizens of Larminium, we are united by our shared values and vision.<br/>
+    We work together to achieve delivery of quality solutions,<br/> while respecting and celebrating our differences.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card h-100 shadow-1-strong">
+      <div class="card-body">
+      <img src="{{ url_for('static', filename='img/larminians/bad-idea.png') }}" class="d-block rounded mx-auto" style="max-width: 100%;" alt="Idea" />
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col mb-4">
+    <div class="card h-100 shadow-1-strong">
+      <div class="card-body">
+        <img src="{{ url_for('static', filename='img/larminians/walk-dog.png') }}" class="d-block rounded mx-auto" alt="Walk Dog" style="max-width: 100%;"/>
+      </div>
+    </div>
+  </div> 
+  <div class="col mb-4">
+    <div class="card h-100 shadow-1-strong">
+      <div class="card-body">       
+        <p class="card-text" style="text-align: center;"><br/>We adapt to constant change and embrace innovation.<br/>
+            As hybrid creatures we thrive in diverse environments, <br/>balancing the best of both worlds.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col mb-4">
+    <div class="card h-100 shadow-1-strong">
+      <div class="card-body">       
+        <p class="card-text" style="text-align: center;"><br/><br/>The story behind our existence is one of curiosity, exploration, and discovery.<br/>
+  Read about it in the blog post.<br/><br/> <a href="{{ url_for('post', slug='first-post') }}" class="btn btn-primary">Read more</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card h-100 shadow-1-strong">
+      <div class="card-body">
+      <img src="{{ url_for('static', filename='img/larminians/presentation.png') }}" class="d-block rounded mx-auto" alt="Presentation" />
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col-md-6 mb-4">
+    <div class="card h-100 shadow-1-strong">
+      <div class="card-body">
+        <img src="{{ url_for('static', filename='img/larminians/personality.png') }}" class="d-block rounded mx-auto" alt="Personality" />
+      </div>
+    </div>
+  </div> 
+  <div class="col-md-6 mb-4">
+    <div class="card h-100 shadow-1-strong">
+      <div class="card-body">       
+        <p class="card-text" style="text-align: center;"><br/>As we represent each a different role within the Larminium ecosystem, we are individually recognizable by our unique colors and patterns.<br/>
+  We represent ourselves one by one on the personas page.<br/><br/> <a href="{{ url_for('larminians_personas') }}" class="btn btn-primary">Read more</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col-md-6 mb-4">
+    <div class="card h-100 shadow-1-strong">
+      <div class="card-body">       
+        <p class="card-text" style="text-align: center;"><br/><br/>Every adventure has its challenges, but together we overcome them.<br/>
+  As a team we work together to keep quality high and spirits higher by recharging in time.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 mb-4">
+    <div class="card h-100 shadow-1-strong">
+      <div class="card-body">
+      <img src="{{ url_for('static', filename='img/larminians/energy-levels.png') }}" class="d-block rounded mx-auto" alt="Energy level" style="max-width: 60%;" />
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col">
+    <div class="card h-100 shadow-1-strong">
+      <div class="card-body">
+      <img src="{{ url_for('static', filename='img/larminians/roadtrip.png') }}" class="d-block rounded mx-auto" alt="Roadtrip" style="max-width: 100%;"/>
+      </div>
+    </div>
+  </div> 
+  <div class="col">
+    <div class="card h-100 shadow-1-strong">
+      <div class="card-body">       
+        <p class="card-text" style="text-align: center; font-size: x-large "><br/>Join us on this journey and become a part of the Larminium community!</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

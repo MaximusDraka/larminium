@@ -5,47 +5,48 @@
 {% block content %}
 
 <!-- Contact Header -->
-<div class="text-center mb-5">
-  <h1 class="display-5 fw-bold">Get in Touch</h1>
+<div class="mb-5">
+  <h1 class="display-5 fw-bold">Contact</h1>
   <p class="lead text-muted">I'd love to hear from you — let's connect.</p>
 </div>
 
 <!-- Social Media Icons -->
-<div class="text-center mb-5">
-  <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="me-4 text-reset">
-    <i class="fab fa-linkedin fa-2x"></i>
-  </a>
-  <a href="https://github.com/yourprofile" target="_blank" class="me-4 text-reset">
-    <i class="fab fa-github fa-2x"></i>
-  </a>
-  <a href="https://twitter.com/yourprofile" target="_blank" class="me-4 text-reset">
-    <i class="fab fa-twitter fa-2x"></i>
-  </a>
-  <a href="mailto:your@email.com" class="text-reset">
-    <i class="fas fa-envelope fa-2x"></i>
-  </a>
+<div class="mb-5">
+  <a href="https://www.linkedin.com/in/tom-larminier/" target="_blank" class="btn btn-primary"> <i class="fab fa-linkedin fa-4x"></i></a>
+  <a href="https://github.com/MaximusDraka" target="_blank" class="btn btn-dark"> <i class="fab fa-github fa-4x"></i></a>
+  <a href="mailto:tom@larminier.eu" target="_blank" class="btn btn-danger"> <i class="fas fa-envelope fa-4x"></i></a>
+  <a href="https://codepen.io/Maximus-Draka" target="_blank" class="btn btn-success"> <i class="fa-brands fa-codepen fa-4x"></i></a>  
 </div>
 
 <hr class="my-5"/>
 
-<!-- Contact Info Section -->
-<div class="row justify-content-center">
-  <div class="col-md-6">
-    <ul class="list-group list-group-light">
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <i class="fas fa-envelope me-3"></i>
-        <span>your@email.com</span>
-      </li>
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <i class="fas fa-phone-alt me-3"></i>
-        <span>+33 6 12 34 56 78</span>
-      </li>
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <i class="fas fa-map-marker-alt me-3"></i>
-        <span>Paris, France</span>
-      </li>
-    </ul>
+<div class="row mb-5">
+  <div class="col-md-4 mb-4">
+    <div class="card h-100 shadow-3">
+      <div class="card-body d-flex flex-column">        
+        <img src="{{ url_for('static', filename='img/website/datacamp.jpg') }}" class="img-fluid shadow-4-strong mb-5 mx-auto" style="height: 170px; width: 370px;" alt="Datacamp"><br/>
+        <p class="card-text">Online learning platform for data science and analytics.</p>
+        <div class="mt-auto"><a href="https://www.datacamp.com/portfolio/tom-bd1f42ca-a8cc-4825-be63-69b158961a12">Visit profile</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-4">
+    <div class="card h-100 shadow-3">
+      <div class="card-body d-flex flex-column">        
+        <img src="{{ url_for('static', filename='img/website/ScrumAlliance.png') }}" class="img-fluid shadow-4-strong mb-5 mx-auto" style="height: 170px; width: 370px;" alt="Scrum Alliance"><br/>
+        <p class="card-text">Agile certification organization.</p>
+        <div class="mt-auto"><a href="https://www.scrumalliance.org/members/1049719">Visit profile</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-4">
+    <div class="card h-100 shadow-3">
+     <div class="card-body d-flex flex-column">
+        <img src="{{ url_for('static', filename='img/website/iiba.png') }}" class="img-fluid shadow-4-strong mb-5 mx-auto" style="height: 170px; width: 370px;" alt="IIBA"><br/>
+        <p class="card-text">Business analysis certification organization.</p>
+        <div class="mt-auto"><a href="https://brussels.iiba.org/">Visit Brussels Chapter</a></div>
+      </div>
+    </div>
   </div>
 </div>
-
 {% endblock %}

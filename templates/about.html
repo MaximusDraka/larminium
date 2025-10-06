@@ -1,112 +1,290 @@
 {% extends 'base.html' %}
 
-{% block title %}About Me - My Site{% endblock %}
+{% block title %}Tom Larminier{% endblock %}
 
 {% block content %}
 
 <!-- Header -->
-<div class="text-center mb-5">
-  <h1 class="display-5 fw-bold">About Me</h1>
-  <p class="lead text-muted">Curious. Creative. Analytical. I'm passionate about solving problems with code and data.</p>
+<div class="mb-5">
+  <h1 class="display-5 fw-bold">Tom Larminier</h1> 
 </div>
 
-<!-- Experience Section -->
-<h2 class="mb-3">Experience</h2>
-<div class="table-responsive mb-5">
-  <table class="table align-middle">
-    <thead class="table-light">
-      <tr>
-        <th scope="col">Logo</th>
-        <th scope="col">Company</th>
-        <th scope="col">Role</th>
-        <th scope="col">Years</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><img src="{{ url_for('static', filename='img/website/company1.jpg') }}" alt="Company 1" style="width: 40px;"></td>
-        <td>Company One</td>
-        <td>Data Analyst</td>
-        <td>2023 – Present</td>
-      </tr>
-      <tr>
-        <td><img src="{{ url_for('static', filename='img/website/company2.png') }}" alt="Company 2" style="width: 40px;"></td>
-        <td>Freelance</td>
-        <td>Business Analyst</td>
-        <td>2021 – 2023</td>
-      </tr>
-    </tbody>
-  </table>
+<!-- Introduction Section -->
+<div class="row mb-5">
+  <div class="col-md-4 mb-2">
+    <div class="card h-100 shadow-1-strong">
+      <div class="card-body">
+        <img src="{{ url_for('static', filename='img/website/me.png') }}" class="d-block rounded mx-auto shadow-4" style="max-width: 100%;" alt="Tom Larminier" />
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8 mb-2">
+    <div class="card h-100 shadow-1-strong">
+      <div class="card-body">
+        <p class="lead text-muted">Curious. Creative. Analytical. <br/><br/>
+          I'm passionate about solving problems with a love for code and data.<br/>
+          I'm an IT freelance analyst having experience in a wide range of roles like:
+          Business data analyst, product owner and leading a GIS team.<br/><br/>
+          My technical background in web-development and functional analysis provide me the knowledge to not only understand the technical aspects, but also to implement solutions myself.<br/><br/>
+          Today, data insights, process improvements and task automation drive me towards AI and ML.
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
-
-<!-- Education Section -->
-<h2 class="mb-3">Education</h2>
-<ul class="list-group list-group-light mb-5">
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    <strong>Master’s in Data Science</strong>
-    <span class="text-muted">University of Paris – 2020</span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    <strong>Bachelor’s in Economics</strong>
-    <span class="text-muted">Université Lyon II – 2018</span>
-  </li>
-</ul>
 
 <!-- Skills Section -->
 <h2 class="mb-3">Skills</h2>
 <div class="mb-5">
-  <span class="badge bg-primary me-2 mb-2">Python</span>
-  <span class="badge bg-success me-2 mb-2">SQL</span>
-  <span class="badge bg-warning text-dark me-2 mb-2">Flask</span>
-  <span class="badge bg-info text-dark me-2 mb-2">Pandas</span>
-  <span class="badge bg-secondary me-2 mb-2">Tableau</span>
-  <span class="badge bg-dark me-2 mb-2">Zapier</span>
-  <span class="badge bg-danger me-2 mb-2">Git</span>
+    <span class="badge bg-info me-2 mb-2 fs-6">Agile events</span>
+    <span class="badge bg-info me-2 mb-2 fs-6">Project organisation, PMBOK</span>
+    <span class="badge bg-info me-2 mb-2 fs-6">Manage Requirements</span>
+    <span class="badge bg-info me-2 mb-2 fs-6">Backlog management</span>
+    <span class="badge bg-info me-2 mb-2 fs-6">Documentation & Wiki</span>
+    <span class="badge bg-info me-2 mb-2 fs-6">UML</span>
+    <span class="badge bg-info me-2 mb-2 fs-6">Present solutions</span>
+    <span class="badge bg-info me-2 mb-2 fs-6">Training</span>
+    <span class="badge bg-info me-2 mb-2 fs-6">Data management</span>
+    <span class="badge bg-info me-2 mb-2 fs-6">SQL</span>
+    <span class="badge bg-info me-2 mb-2 fs-6">Python</span>
+    <span class="badge bg-info me-2 mb-2 fs-6">Graph Database</span>
+    <span class="badge bg-info me-2 mb-2 fs-6">Web services</span>
+    <span class="badge bg-info me-2 mb-2 fs-6">Testing</span>
+    <span class="badge bg-info me-2 mb-2 fs-6">Collaboration tools</span>
+    <span class="badge bg-info me-2 mb-2 fs-6">Python</span>
+    <span class="badge bg-info me-2 mb-2 fs-6">GIS</span>
+    <span class="badge bg-info me-2 mb-2 fs-6">Concepts of ML and Big data</span>
+    <span class="badge bg-info me-2 mb-2 fs-6">Report & Dashboard design</span>
+    <span class="badge bg-info me-2 mb-2 fs-6">Process design</span>
+    <span class="badge bg-info me-2 mb-2 fs-6">BPMN</span>
+    <span class="badge bg-info me-2 mb-2 fs-6">Usage of AI in daily work</span>
 </div>
 
-<!-- Projects Section -->
-<h2 class="mb-3">Projects</h2>
+
+<!-- Experience Section -->
+<h2 class="mb-3">Experience</h2> 
+<div class="table-responsive mb-5">
+  <table class="table align-middle">
+    <thead class="table-light">
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Client</th>
+        <th scope="col">Period</th>
+        <th scope="col">Projects & Responsibilities</th>        
+      </tr>
+    </thead>
+    <tbody>
+       <tr>
+        <td align="center"><img src="{{ url_for('static', filename='img/website/logo.jpg') }}" alt="Larminium" style="width: 80px;"></td>
+        <td>Larminium</td>
+        <td>2015 – Present</td>
+        <td><strong>Owner</strong></td>
+      </tr>
+       <tr>
+        <td align="center"><img src="{{ url_for('static', filename='img/website/DG-SANTE.jpg') }}" alt="EC" style="width: 120px;"></td>
+        <td>European Commission - DG Health & Food Safety</td>
+        <td>09/2025 – Present</td>
+        <td><strong>AI Business Analyst</strong> <br/>
+          Release orchestration<br/>
+          AI use cases identification<br/><br/> 
+          <strong>Product Owner</strong><br/>
+          ADIS - Web services<br/><br/>        
+          <strong>GIS Lead</strong><br/>ADIS regionalization<br/>ESRI Portal<br/></td>
+      </tr>
+      <tr>
+        <td align="center"><img src="{{ url_for('static', filename='img/website/DG-SANTE.jpg') }}" alt="EC" style="width: 120px;"></td>
+        <td>European Commission - DG Health & Food Safety</td>
+        <td>2020 – 08/2025</td>
+        <td><strong>Product Owner</strong> <br/>
+          Animal Disease Information System - ADIS <br/>
+          Public website - Union reporting - WIKI<br/>WAHIS Interconnection - API<br/> <br/>
+          <strong>Data analysis as BI team member</strong><br/><br/>
+          <strong>GIS Lead</strong><br/>ADIS Reporting<br/>Automation<br/></td>
+      </tr>
+      <tr>
+        <td align="center"><img src="{{ url_for('static', filename='img/website/DG-GROWTH.jpg') }}" alt="EC" style="width: 120px;"></td>
+        <td>European Commission - DG Growth</td>
+        <td>2018 – 2020</td>
+        <td><strong>Lead Business Analyst</strong><br/>
+          EUDAMED - Medical Devices database<br/>
+        Coach analysis team - Manage backlog<br/>
+        Coordinate with IT and stakeholders - Workshops & Demos<br/>
+        Organize and lead agile events - Requirement & Change management 
+        </td>
+      </tr>   
+      <tr>
+        <td align="center"><img src="{{ url_for('static', filename='img/website/Colruyt_Group_Logo.png') }}" alt="Colruyt Group" style="width: 120px;"></td>
+        <td>Colruyt Group - Security Management</td>
+        <td>2017 – 2018</td>
+        <td><strong>Functional Analyst</strong><br/>Identity Access Management - SailPoint<br/>Cloud Access Security Broker - Netskope<br/>Single Sign On for shop POS</td>
+      </tr>
+      <tr>
+        <td align="center"><img src="{{ url_for('static', filename='img/website/EC.png') }}" alt="EC" style="width: 120px;">
+          <br/><br/><img src="{{ url_for('static', filename='img/website/altran_logo.jpg') }}" alt="Altran" style="width: 40px;">
+         <img src="{{ url_for('static', filename='img/website/irisgroup_logo.jpg') }}" alt="Altran" style="width: 40px;">
+         <img src="{{ url_for('static', filename='img/website/trasysinternational_logo.jpg') }}" alt="Altran" style="width: 40px;">
+        </td>
+        <td>European Commission - DG Enterprise</td>
+        <td>2006 – 2016</td>
+        <td><strong>Senior Analyst Programmer - Functional Analyst</strong> <br/>
+          Internal market surveillance - ICSMS<br/>
+          Financial control and reporting<br/>
+          Procurement management solution<br/>
+          Design and implementation of IT unit annual planning tool
+         </td>
+      </tr>   
+      <tr>
+        <td align="center"><img src="{{ url_for('static', filename='img/website/absi.png') }}" alt="ABSI" style="width: 60px;"> <img src="{{ url_for('static', filename='img/website/asp.png') }}" alt="ABSI" style="width: 60px;"></td>
+        <td>ABSI & ASP.be</td>
+        <td>2000 – 2006</td>
+        <td><strong>Analyst Programmer</strong> <br/>
+          B2B websites, webshops<br/>
+          Domain name management, hosting and helpdesk<br/>
+          System integrations with multiple platforms<br/>
+         </td>
+      </tr>     
+      <tr><td colspan="4" align="center"><a target="_blank" onclick="openLightbox(0)" class="btn btn-primary">Timeline</a></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Languages Section -->
+<h2 class="mb-3">Languages</h2>
+<div class="mb-5">
+  <span class="badge bg-success me-2 mb-2 fs-6">Dutch</span>
+  <span class="badge bg-success me-2 mb-2 fs-6">English</span>
+  <span class="badge bg-success me-2 mb-2 fs-6">French</span> 
+</div>
+
+<hr class="my-5"/>
+
+<!-- Qualifications Section -->
+<h2 class="mb-3">Qualifications</h2>
+<div class="mb-5">
+ <span class="badge bg-secondary me-2 mb-2 fs-6">Wide ICT background</span>
+ <span class="badge bg-secondary me-2 mb-2 fs-6">Team player</span>
+ <span class="badge bg-secondary me-2 mb-2 fs-6">Organized</span>
+ <span class="badge bg-secondary me-2 mb-2 fs-6">Diplomatic</span>
+ <span class="badge bg-secondary me-2 mb-2 fs-6">Self learner</span>
+ <span class="badge bg-secondary me-2 mb-2 fs-6">Pro-active</span>
+ <span class="badge bg-secondary me-2 mb-2 fs-6">Mentor</span>
+ <span class="badge bg-secondary me-2 mb-2 fs-6">Ethical</span>
+ <span class="badge bg-secondary me-2 mb-2 fs-6">Detail oriented</span>
+ <span class="badge bg-secondary me-2 mb-2 fs-6">Problem solver</span>
+ <span class="badge bg-secondary me-2 mb-2 fs-6">Critical thinker</span>
+ <span class="badge bg-secondary me-2 mb-2 fs-6">Facilitator</span>
+</div>
+
+<!-- Experience Section -->
+<h2 class="mb-3">Education</h2>
+<div class="table-responsive mb-5">
+  <table class="table align-middle">
+    <thead class="table-light">
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Institution</th>
+        <th scope="col">Degree</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+       <tr>
+        <td align="center"><img src="{{ url_for('static', filename='img/website/kul.png') }}" alt="Erasmus" style="width: 100px;"></td>
+        <td>KUL<br/>Leuven</td>
+        <td>Post-Graduate in Big Data and Analytics in Business and Management<br/>
+                 <strong>Magna Cum Laude</strong><br/><br/>
+                  Data Analytics, Analytics Business Applications, <br/>
+                  Big Data Technologies, Process Analytics, <br/>              
+                  Managing Big Data & Analytics Projects and Teams and Python<br/>                  
+                  My dissertation project was a full MLOps implementation in python<br/>
+                  NLP/NER, classification and recommender models.<br/>
+               <a href="https://github.com/MaximusDraka/skill-skeleton" class="btn btn-primary">Discover dissertation</a>
+</td>
+        <td>2023 - 2024</td>
+      </tr>
+       <tr>
+        <td align="center"><img src="{{ url_for('static', filename='img/website/syntra.png') }}" alt="Erasmus" style="width: 100px;"></td>
+        <td>Syntra<br/>Mechelen</td>
+        <td>Python</td>
+        <td>2022</td>
+      </tr>
+       <tr>
+        <td align="center"><img src="{{ url_for('static', filename='img/website/ScrumAlliance.png') }}" alt="Erasmus" style="width: 100px;"></td>
+        <td>Scrum Alliance</td>
+        <td><a href="https://bcert.me/bc/html/show-badge.html?b=qrfqzydr" class="btn btn-primary">Certified Scrum Master</a></td>
+        <td>2020</td>
+      </tr>
+     <tr>
+        <td align="center"><img src="{{ url_for('static', filename='img/website/ScrumAlliance.png') }}" alt="Erasmus" style="width: 100px;"></td>
+        <td>Scrum Alliance</td>
+        <td><a href="https://bcert.me/bc/html/show-badge.html?b=prudzitx" class="btn btn-primary">Certified Scrum Product Owner</a></td>
+        <td>2020</td>
+      </tr>
+       <tr>
+        <td align="center"><img src="{{ url_for('static', filename='img/website/ems.png') }}" alt="Erasmus" style="width: 100px;"></td>
+        <td>Ehsal Management School / HUB<br/>Brussels</td>
+        <td>Practical Leadership</td>
+        <td>2018</td>
+      </tr>
+       <tr>
+        <td align="center"><img src="{{ url_for('static', filename='img/website/ems.png') }}" alt="Erasmus" style="width: 100px;"></td>
+        <td>Ehsal Management School / HUB<br/>Brussels</td>
+        <td>Post-Bachelor in Industrial Enterprise Management</td>
+        <td>2010 – 2012</td>
+      </tr>
+       <tr>
+        <td align="center"><img src="{{ url_for('static', filename='img/website/avans.png') }}" alt="Erasmus" style="width: 100px;"></td>
+        <td>Evans Hogeschool<br/>Breda</td>
+        <td>Bachelor Information and Communication Technology</td>
+        <td>2001 – 2003</td>
+      </tr>
+      <tr>
+        <td align="center"><img src="{{ url_for('static', filename='img/website/erasmus.png') }}" alt="Erasmus" style="width: 100px;"></td>
+        <td>Erasmus Hogeschool<br/>Brussels</td>
+        <td>Bachelor in Informatics</td>
+        <td>1997 – 2000</td>
+      </tr>
+      <tr><td colspan="4" align="center"><a target="_blank" onclick="openLightbox(1)" class="btn btn-primary">Timeline</a></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Qualifications Section -->
+<h2 class="mb-3">Tools</h2>
+<div class="mb-5">
+ <span class="badge bg-warning me-2 mb-2 fs-6">Confluence</span>
+ <span class="badge bg-warning me-2 mb-2 fs-6">Jira</span>
+ <span class="badge bg-warning me-2 mb-2 fs-6">Slack</span>
+ <span class="badge bg-warning me-2 mb-2 fs-6">Zoom</span>
+ <span class="badge bg-warning me-2 mb-2 fs-6">MS Teams</span>
+ <span class="badge bg-warning me-2 mb-2 fs-6">MS Office</span>
+ <span class="badge bg-warning me-2 mb-2 fs-6">Draw.io</span>
+ <span class="badge bg-warning me-2 mb-2 fs-6">Enterprise Architect</span>
+ <span class="badge bg-warning me-2 mb-2 fs-6">SOAPUI</span>
+ <span class="badge bg-warning me-2 mb-2 fs-6">ArcGISPro</span>
+ <span class="badge bg-warning me-2 mb-2 fs-6">Visual Studio</span>
+ <span class="badge bg-warning me-2 mb-2 fs-6">Postman</span>
+ <span class="badge bg-warning me-2 mb-2 fs-6">GitHub</span>
+ <span class="badge bg-warning me-2 mb-2 fs-6">Docker</span>
+ <span class="badge bg-warning me-2 mb-2 fs-6">Neo4J</span>
+</div>
+
+<!--
+
+
+<h2 class="mb-3">Recommendations</h2>
 <div class="row mb-5">
-  <div class="col-md-4 mb-4">
-    <div class="card h-100 shadow-3">
-      <div class="card-body">
-        <h5 class="card-title">Client Dashboard</h5>
-        <p class="card-text">Built an interactive dashboard using Flask, Chart.js, and MDBootstrap to visualize business KPIs in real-time.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4 mb-4">
-    <div class="card h-100 shadow-3">
-      <div class="card-body">
-        <h5 class="card-title">Social Automation Bot</h5>
-        <p class="card-text">Automated LinkedIn post scheduling using Python + Zapier + Google Sheets integration.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4 mb-4">
-    <div class="card h-100 shadow-3">
-      <div class="card-body">
-        <h5 class="card-title">Flask Blog CMS</h5>
-        <p class="card-text">Created a lightweight content management system with Markdown editing and tag-based routing.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Testimonials Section -->
-<h2 class="mb-3">Testimonials</h2>
-<div class="row">
   <div class="col-md-6 mb-4">
     <div class="card h-100 shadow-1-strong">
       <div class="card-body">
-        <div class="d-flex align-items-center mb-3">
-          <img src="https://randomuser.me/api/portraits/men/31.jpg" alt="John" class="rounded-circle me-3" width="50">
+        <div class="d-flex align-items-center mb-4">
+         
           <div>
             <h6 class="fw-bold mb-0">John Doe</h6>
             <small class="text-muted">CEO, Acme Inc.</small>
           </div>
         </div>
-        <p class="card-text">“Tom brought structure, clarity, and automation to our reporting — it saved us hours every week.”</p>
+        <p class="card-text">“”</p>
       </div>
     </div>
   </div>
@@ -114,17 +292,55 @@
   <div class="col-md-6 mb-4">
     <div class="card h-100 shadow-1-strong">
       <div class="card-body">
-        <div class="d-flex align-items-center mb-3">
-          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Jane" class="rounded-circle me-3" width="50">
+        <div class="d-flex align-items-center mb-4">
+        
           <div>
             <h6 class="fw-bold mb-0">Jane Smith</h6>
             <small class="text-muted">Project Manager, DataCo</small>
           </div>
         </div>
-        <p class="card-text">“Smart, communicative, and fast. He delivered even more than what we asked for.”</p>
+        <p class="card-text">“”</p>
       </div>
     </div>
   </div>
 </div>
 
+
+
+
+ -->
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="close-btn" onclick="closeLightbox()">×</span>
+    <img id="lightbox-img" src="" alt="Large view">
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const images = ["{{ url_for('static', filename='img/website/experience.png') }}", "{{ url_for('static', filename='img/website/education.png') }}", "{{ url_for('static', filename='img/website/domains.png') }}"];
+    console.log(images);
+    let currentIndex = 0;   
+
+    function openLightbox(index) {
+        currentIndex = index;
+        document.getElementById('lightbox-img').src = images[currentIndex];
+        document.getElementById('lightbox').style.display = 'flex';
+     
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
+        clearInterval(slideshowInterval);
+    }
+
+    // Optional: Close with Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeLightbox();
+        }
+    });
+</script>
 {% endblock %}

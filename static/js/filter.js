@@ -8,17 +8,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
       cards.forEach(card => {
         const category = card.getAttribute("data-category");
+        const subCategory = card.getAttribute("data-sub-category");
 
-        if (filter === "all" || category === filter) {
+        if (filter === "All Categories" || category === filter || subCategory === filter) {
           card.style.display = "block";
         } else {
           card.style.display = "none";
         }
+
+        document.querySelector("#active-filter").textContent = `${filter}`;
+
       });
 
       // Optional: Highlight active button
-      buttons.forEach(btn => btn.classList.remove("active"));
-      button.classList.add("active");
+      //buttons.forEach(btn => btn.classList.remove("active"));
+      //button.classList.add("active");
     });
   });
 });

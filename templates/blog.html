@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Blog - Larminium{% endblock %}
+
+{% block content %}
+
+<div class="mb-5">
+  <h1 class="display-5 fw-bold">Blog</h1> 
+</div>
+
+{% if query %}
+  <h5 class="mb-4 text-muted">Search results for "{{ query }}": {{ posts|length }} article(s) found - <a href="{{ url_for('blog') }}">Show all articles</a></h5>
+{% endif %}
+
+
+<!-- Filter Buttons -->
+<div class="mb-4">
+  <button class="btn btn-primary btn-sm filter-btn" data-filter="All Categories">All Categories</button>
+ <!-- <button class="btn btn-warning btn-sm filter-btn" data-filter="Insights">Insights</button> -->
+
+  <button
+    type="button"
+    class="btn btn-warning btn-sm dropdown-toggle"
+    id="insightDropdown"
+    data-mdb-dropdown-init
+    data-mdb-ripple-init
+    aria-expanded="false"
+    aria-expanded="false">
+    Insights
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="insightDropdown">
+
+    {% for subcat in insight_subcategories %}
+    <li><a class="dropdown-item filter-btn" href="#" data-filter="{{ subcat }}">{{ subcat }}</a></li>
+    {% endfor %}
+  </ul>
+
+
+  <button class="btn btn-info btn-sm filter-btn" data-filter="Certificate">Certificate</button>
+  <button class="btn btn-success btn-sm filter-btn" data-filter="Tools">Tools & Techniques</button>
+  <button class="btn btn-dark btn-sm filter-btn" data-filter="Skills">Skills</button>
+  &nbsp;&nbsp;&nbsp;<i class="fas fa-filter"></i> <span id="active-filter" class="text-muted">All Categories</span>
+</div>
+
+
+{% include 'posts_list.html' %}
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/filter.js') }}"></script>
+{% endblock %}

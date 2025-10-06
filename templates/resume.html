@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact - My Site{% endblock %}
+
+{% block content %}
+
+<div class="card">
+<div class="card-body">
+    <h1 class="card-title">{{ resume.basics.name }}</h1>
+    <h4 class="card-subtitle mb-3">{{ resume.basics.label }}</h4>
+    <p class="card-text">{{ resume.basics.summary }}</p>
+    <p><strong>Email:</strong> <a href="mailto:{{ resume.basics.email }}">{{ resume.basics.email }}</a></p>
+
+    <hr>
+
+    <h3>Work Experience</h3>
+    {% for job in resume.work %}
+    <div class="mb-4">
+        <h5>{{ job.position }} at {{ job.company }}</h5>
+        <p><em>{{ job.startDate }} to {{ job.endDate }}</em></p>
+        <p>{{ job.summary }}</p>
+    </div>
+    {% endfor %}
+
+    
+      <h3 class="card-title">Work Experience Timeline</h3>
+      <div class="mermaid">
+        {{ mermaid_code }}
+      </div>
+  
+
+</div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Initialize Mermaid
+mermaid.initialize({startOnLoad: true});
+</script>
+{% endblock %}

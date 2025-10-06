@@ -1,64 +1,46 @@
 {% extends 'base.html' %}
 
-{% block title %}Home - My Site{% endblock %}
+{% block title %}Home - Larminium{% endblock %}
 
 {% block content %}
-
 <!-- Hero Section -->
-<div class="text-center">
-  <img src="{{ url_for('static', filename='img/website/hero.jpg') }}" class="img-fluid rounded-circle shadow-4-strong mb-4" alt="Hero Image" style="max-width: 250px;">
-  <h1 class="display-5 fw-bold">Welcome to My Site</h1>
-  <p class="lead text-muted">Hi, I'm Tom — a data-driven problem solver with a love for clean design and thoughtful code.</p>
+<div>  
+  <h1 class="display-5 fw-bold">Hello, welcome!</h1>
+ 
+</div>
+<div class="row align-items-center">
+  <!-- Image Column -->
+  <div class="col-md-6">
+    <img src="{{ url_for('static', filename='img/website/home-banner.png') }}" 
+         class="rounded img-fluid" 
+         alt="Home banner">
+  </div>
+
+  <!-- Text Column -->
+  <div class="col-md-6">
+    <p class="lead text-muted">
+      I'm Tom - a freelance business analyst from Belgium and a data-driven problem solver with a love for visualizations.<br/><br/>
+      Feel free to explore my blog posts, learn about the Larminians and more!
+    </p>
+  </div>
 </div>
 
 <hr class="my-5"/>
 
-<!-- Cards Section -->
-<div class="row text-center">
-  <!-- Card 1 -->
-  <div class="col-lg-4 mb-4">
-    <div class="card h-100 shadow-3">
-      <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.jpg" class="img-fluid"/>
-        <a href="#!"><div class="mask" style="background-color: rgba(0, 0, 0, 0.2);"></div></a>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Analytics</h5>
-        <p class="card-text">Turn raw data into powerful business insights through clean dashboards and models.</p>
-        <a href="#!" class="btn btn-primary btn-sm">Learn More</a>
-      </div>
-    </div>
-  </div>
+<!-- Recent Posts Section -->
 
-  <!-- Card 2 -->
-  <div class="col-lg-4 mb-4">
-    <div class="card h-100 shadow-3">
-      <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/112.jpg" class="img-fluid"/>
-        <a href="#!"><div class="mask" style="background-color: rgba(0, 0, 0, 0.2);"></div></a>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Automation</h5>
-        <p class="card-text">Streamline workflows with Python, Flask, and smart integrations using Zapier or Make.</p>
-        <a href="#!" class="btn btn-primary btn-sm">See in Action</a>
-      </div>
-    </div>
-  </div>
+{% include 'posts_list.html' %}
 
-  <!-- Card 3 -->
-  <div class="col-lg-4 mb-4">
-    <div class="card h-100 shadow-3">
-      <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/113.jpg" class="img-fluid"/>
-        <a href="#!"><div class="mask" style="background-color: rgba(0, 0, 0, 0.2);"></div></a>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Web Projects</h5>
-        <p class="card-text">From portfolio sites to interactive dashboards, I build fast, secure, and stylish web apps.</p>
-        <a href="#!" class="btn btn-primary btn-sm">View Projects</a>
-      </div>
-    </div>
-  </div>
+<br/>
+<div class="text-center">
+  <a href="{{ url_for('blog') }}" class="btn btn-primary">View All Articles</a>
 </div>
+<br/>
+
+<!---
+<hr class="my-5"/>
+
+<img src="{{ url_for('static', filename=image) }}" class="d-block w-100 rounded shadow-4" alt="Humor Image">
+-->
 
 {% endblock %}

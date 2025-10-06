@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Image Gallery</h1>
+
+<div id="gallery">
+    {% for image in images %}
+        <img src="{{ image }}" class="thumbnail" onclick="openLightbox({{ loop.index0 }})">
+    {% endfor %}
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="close-btn" onclick="closeLightbox()">×</span>
+    <img id="lightbox-img" src="" alt="Large view">
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const images = {{ images | tojson }};   
+    let currentIndex = 0;
+    let slideshowInterval;
+
+    function openLightbox(index) {
+        currentIndex = index;
+        document.getElementById('lightbox-img').src = images[currentIndex];
+        document.getElementById('lightbox').style.display = 'flex';
+
+        // Start slideshow
+        slideshowInterval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % images.length;
+            document.getElementById('lightbox-img').src = images[currentIndex];
+        }, 5000);
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
+        clearInterval(slideshowInterval);
+    }
+
+    // Optional: Close with Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeLightbox();
+        }
+    });
+</script>
+{% endblock %}
+

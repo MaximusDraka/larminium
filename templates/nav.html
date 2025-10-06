@@ -1,29 +1,59 @@
-<!-- templates/nav.html -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Larminium</a>
-    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
+  <div class="container">
+    <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='img/website/logo.png') }}" alt="Larminium Logo" style="max-height: 50px;"> Larminium</a>
+    <button
+      data-mdb-collapse-init
+      class="navbar-toggler"
+      type="button"
+      data-mdb-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <i class="fas fa-bars"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/aboutme">About Me</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/articles">Articles</a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link" href="/humor">Humor</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/contact">Contact</a>
-        </li>
+    <li class="nav-item"><a class="nav-link {% if request.endpoint == 'index' %}active{% endif %}" href="/">Home</a></li>
+    <li class="nav-item"><a class="nav-link {% if request.endpoint == 'aboutme' %}active{% endif %}" href="/aboutme">Tom Larminier</a></li>
+    <li class="nav-item"><a class="nav-link {% if request.endpoint == 'blog' %}active{% endif %}" href="/blog">Blog</a></li>
+
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle {% if request.endpoint == 'larminians_introduction' or request.endpoint == 'larminians_personas' or request.endpoint == 'larminians_adventures' %}active{% endif %}" href="#" id="navbarDropdown"
+         role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+        Larminians
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <li><a class="dropdown-item" href="/larminians/introduction">Introduction</a></li>
+        <li><a class="dropdown-item" href="/larminians/personas">Personas</a></li>
+       <!--- <li><a class="dropdown-item" href="/larminians/compose">Compose Avatar</a></li>--> 
+        <li><a class="dropdown-item" href="/larminians/adventures">Adventures</a></li>
       </ul>
+    </li>
+    <!--- <li class="nav-item"><a class="nav-link" href="/slideshow">Gallery</a></li>-->
+    <li class="nav-item"><a class="nav-link  {% if request.endpoint == 'projects' %}active{% endif %}" href="/projects">Projects</a></li>
+    <li class="nav-item"><a class="nav-link {% if request.endpoint == 'contact' %}active{% endif %}" href="/contact">Contact</a></li>
+    <li class="nav-item">
+      <form class="d-flex" role="search" method="POST" action="{{ url_for('blog') }}">
+        {{ searchForm.hidden_tag() }}
+        {{ searchForm.q(class="form-control me-2", placeholder="Search blog") }}
+        <button type="submit" class="btn btn-primary" title="Search">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+    </li>
+  </ul>
+<!---
+  <ul class="navbar-nav d-flex flex-row me-1">
+    <li class="nav-item me-3 me-lg-0">
+      <a class="nav-link" href="https://github.com/MaximusDraka"><i class="fab fa-github"></i></a>
+    </li>
+  </ul>
+  -->
     </div>
   </div>
 </nav>
+
+<!---
+<img src="{{ url_for('static', filename='img/website/home.jpg') }}" style="height: 75px; object-fit: cover;" class="img-fluid w-100 mb-5" alt="Banner">
+--->

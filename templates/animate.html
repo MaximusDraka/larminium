@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <h1>Animate</h1>
+
+ <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform-origin="50 50">
+    <g>
+      <animateTransform
+        attributeName="transform"
+        attributeType="XML"
+        type="rotate"
+        from="0 50 50"
+        to="360 50 50"
+        dur="2s"
+        repeatCount="indefinite"
+      />
+      <g clip-path="url(#clip0_10_3611)">
+        <mask id="mask0_10_3611" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
+          <path d="M0 0H100V100H0V0Z" fill="white"/>
+        </mask>
+        <g mask="url(#mask0_10_3611)">
+          <path d="M50 0C77.5441 0 100 22.4359 100 50C100 77.5641 77.5441 100 50 100C22.4359 100 0 77.5641 0 50C0 22.4359 22.4359 0 50 0Z" fill="#FC0000"/>
+        </g>
+        <path d="M59.4454 50.0101L77.0083 32.4471C79.6639 29.7915 79.6639 25.6472 77.0083 22.9917C74.3528 20.3361 70.2085 20.3361 67.573 22.9917L50.171 40.5546L32.427 22.9917C29.7714 20.3361 25.6271 20.3361 22.9917 22.9917C20.3361 25.6472 20.3361 29.7915 22.9917 32.4471L40.5546 50.0101L23.1526 67.573C20.4971 70.2286 20.4971 74.3729 23.1526 77.0284C24.4804 78.3562 26.1301 79 27.7999 79C29.4495 79 31.0992 78.3562 32.427 77.0284L49.9899 59.4454L67.573 77.0284C68.8807 78.3562 70.5505 79 72.2001 79C73.8699 79 75.5196 78.3562 76.8474 77.0284C79.5029 74.3729 79.5029 70.2286 76.8474 67.573L59.4454 50.0101Z" fill="white"/>
+      </g>
+    </g>
+  </g>
+
+  <defs>
+    <clipPath id="clip0_10_3611">
+      <rect width="100" height="100" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>
+
+
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g clip-path="url(#clip0_10_3610)">
+    <mask id="mask0_10_3610" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
+      <path d="M0 0H100V100H0V0Z" fill="white"/>
+    </mask>
+    <g mask="url(#mask0_10_3610)">
+      <path d="M100 50C100 77.6042 77.6042 100 50 100C22.3958 100 0 77.6042 0 50C0 22.375 22.3958 0 50 0C77.6042 0 100 22.375 100 50Z" fill="#0F9246"/>
+    </g>
+
+    <!-- ✅ White check with blinking animation -->
+    <path id="check" d="M27 53.2218L45.2745 72L78 38.4102L68.8319 29L45.4389 53.0319L36.312 43.6639L27 53.2218Z" fill="white">
+      <animate 
+        attributeName="opacity"
+        values="1;0;1"
+        dur="1s"
+        repeatCount="indefinite"
+      />
+    </path>
+  </g>
+
+  <defs>
+    <clipPath id="clip0_10_3610">
+      <rect width="100" height="100" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>
+
+
+
+
+
+  
+
+{% endblock %}

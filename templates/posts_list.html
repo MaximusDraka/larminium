@@ -1,0 +1,41 @@
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+{% for p in posts %}
+    <div class="col article-card" data-category="{{ p.category }}" data-sub-category="{{ p.sub_category }}">
+        <div class="card h-100" >     
+            {% if p.cover_image %}
+            <img src="{{ p.cover_image }}" class="card-img-top shadow-4-strong" alt="cover">
+            {% endif %}
+            <div class="card-body"> 
+                {% if p.category == 'Insights' %}
+                  <span style="width: 60px;cursor: pointer;" class="badge bg-warning me-2 mb-2 filter-btn" data-filter="Insights">{{ p.category }}</span>
+                {% endif %}              
+                {% if p.category == 'Certificate' %}
+                  <span style="width: 60px;cursor: pointer;" class="badge bg-info me-2 mb-2 filter-btn" data-filter="Certificate">{{ p.category }}</span>
+                {% endif %}
+                {% if p.category == 'Tools' %}
+                  <span style="width: 60px;cursor: pointer;" class="badge bg-success me-2 mb-2 filter-btn" data-filter="Tools">{{ p.category }}</span>
+                {% endif %}
+                {% if p.category == 'Skills' %}
+                  <span style="width: 60px;cursor: pointer;" class="badge bg-dark me-2 mb-2 filter-btn" data-filter="Skills">{{ p.category }}</span>
+                {% endif %}
+                {% if not p.category %}
+                  <span class="badge bg-secondary mb-2">Uncategorized</span>
+                {% endif %}
+                {% if p.sub_category %}
+                  <i class="fas fa-arrow-right"></i>&nbsp;&nbsp;<span style="width: 100px;" class="badge bg-secondary me-2 mb-2">{{ p.sub_category }}</span>
+                {% endif %}
+                <h5 class="card-title">{{ p.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ p.create_date.strftime('%b %d, %Y') }}</h6>
+                {% if p.summary %}
+                <p class="card-text">{{ p.summary }}</p>
+                {% else %}
+                <p class="card-text text-muted">No summary provided.</p>
+                {% endif %}
+                <div class="mt-auto">        
+                  <a href="{{ url_for('post', slug=p.slug) }}">Read more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>

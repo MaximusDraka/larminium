@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact - My Site{% endblock %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+  <div id="my-alert" class="alert alert-success alert-dismissible fade show" role="alert">
+  {{ message }}
+  <button  type="button" class="btn-close" aria-label="Close" onclick="document.getElementById('my-alert').remove();"></button>
+</div>
+{% endfor %}
+
+  <h1>Add a user</h1>
+
+    {% if name %}
+        <p>Hello, {{ name }} - {{ email }}</p>
+    {% else %}
+    
+        <div class="row mb-8">
+            <div class="col-md-6 mb-2">
+                <div class="card h-100 shadow-1-strong">
+                    <div class="card-body">                
+                        <form method="POST">
+                            {{ form.hidden_tag() }}
+                            <div class="mb-4">
+                                {{ form.name.label(class="form-label")}}
+                                {{ form.name(class="form-control") }}
+                            </div>
+                            <div class="mb-4">
+                                {{ form.email.label(class="form-label")}}
+                                {{ form.email(class="form-control") }}
+                            </div>
+
+                            {{ form.submit(class="btn btn-primary") }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if users %}
+            <h2 class="mt-5">Users</h2>
+            <ul class="list-group">
+                {% for user in users %}
+                    <li class="list-group-item">
+                        {{ user.name }} - {{ user.email }} (Added on {{ user.date_created.strftime('%Y-%m-%d') }})
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endif %}
+{% endblock %}

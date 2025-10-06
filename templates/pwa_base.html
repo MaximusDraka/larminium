@@ -1,0 +1,75 @@
+<!-- templates/ pwa_base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}My Site{% endblock %}</title>
+  <!-- Manifest -->
+  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+  <!-- MDB Bootstrap CSS -->
+  <link href="{{ url_for('static', filename='css/mdb.min.css') }}" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet"/>    
+  
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico', v=7) }}">
+  
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/pygments.css') }}">
+</head>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TFKDPMDB21"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TFKDPMDB21');
+</script>
+
+<body>
+  
+   {% include 'nav.html' %}
+
+    <div class="container">
+        <br/><br/><br/><br/>
+        {% block content %}{% endblock %}
+    </div>
+
+  {% block scripts %}  {% endblock %}
+  
+  
+<!-- MDB Bootstrap JS -->
+  <script src="{{ url_for('static', filename='js/mdb.umd.min.js') }}"></script>
+  <script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10.9.4/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, securityLevel: "antiscript" });
+
+    // Optional: log parser errors to the console for easier debugging
+    mermaid.parseError = (err, src) => {
+      console.error("Mermaid parse error:", err, "\nSource:\n", src);
+    };
+  </script>
+  <script>
+      const ddEl = document.getElementById('navbarDropdown');
+      if (ddEl) mdb.Dropdown.getOrCreateInstance(ddEl);
+
+        if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw-1.js')
+            .then(() => console.log('✅ SW registered'))
+            .catch(err => console.error('❌ SW registration failed', err));
+        }
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+  <footer role="contentinfo">
+    <div class="mx-auto"
+         style="max-width: 800px; text-align: center; padding: 20px; font-size: 0.9em; color: #666;">
+      &copy; {{ current_year }} Larminium. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>

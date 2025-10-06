@@ -1,0 +1,24 @@
+{
+  "basics": {
+    "name": "Jane Doe",
+    "label": "Software Developer",
+    "email": "jane.doe@example.com",
+    "summary": "Experienced developer with a passion for building web applications."
+  },
+  "work": [
+    {
+      "company": "Tech Corp",
+      "position": "Full Stack Developer",
+      "startDate": "2020-01-01",
+      "endDate": "2023-12-31",
+      "summary": "Worked on developing and maintaining full-stack web applications."
+    },
+    {
+      "company": "IBM",
+      "position": "Architect",
+      "startDate": "2024-01-01",
+      "endDate": "2025-12-31",
+      "summary": "XML gateway."
+    }
+  ]
+}

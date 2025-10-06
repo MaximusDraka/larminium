@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+
+{% block title %}Introduction - Larminium{% endblock %}
+
+{% block content %}
+
+
+<!-- Header -->
+<div class="mb-5">
+  <h1 class="display-5 fw-bold">Larminians > Create your Larminian</h1>
+  <p class="lead text-muted">We are the Larminians, a group of avatars living in Larminium dedicated to the discovery of technology, creativity, and problem-solving.
+    <br/>We represent different roles and skills in the tech world, each with our own unique perspective and approach to challenges.<br/>
+    Find out more about our personas below. 
+  </p>
+</div>
+<div class="row">
+    <div class="col-md-6 mb-4">
+
+      <div class="drop-zone" data-target="head">
+        <div>
+          <img src="/static/avatar/head1.png" class="draggable" draggable="true" data-type="head">     
+          <img src="/static/avatar/head2.png" class="draggable" draggable="true" data-type="head">    
+        </div> 
+        <div class="drag-here">Drag here</div>
+      </div>
+
+      <div class="drop-zone" data-target="face">
+        <div>
+           
+          <img src="/static/avatar/angry.png" class="draggable" draggable="true" data-type="face">   
+          <img src="/static/avatar/neutral.png" class="draggable" draggable="true" data-type="face">   
+        </div> 
+        <div class="drag-here">Drag here</div>
+      </div>
+
+      <div class="drop-zone" data-target="body">
+        <div>  
+            <img src="/static/avatar/body4.png" class="draggable" draggable="true" data-type="body">
+        </div>
+        <div class="drag-here">Drag here</div>
+      </div>
+
+      <div class="drop-zone" data-target="legs">
+        <div>       
+          <img src="/static/avatar/legs1.png" class="draggable" draggable="true" data-type="legs">
+          <img src="/static/avatar/legs2.png" class="draggable" draggable="true" data-type="legs">
+       </div>   
+       <div class="drag-here">Drag here</div>
+      </div>
+
+      <div class="drop-zone" data-target="arms">
+        <div>
+            <img src="/static/avatar/badge3.png" class="draggable" draggable="true" data-type="arms">
+            <img src="/static/avatar/arms2.png" class="draggable" draggable="true" data-type="arms">
+        </div>   
+        <div class="drag-here">Drag here</div>
+      </div>
+
+      <div class="drop-zone" data-target="badge">
+        <div>       
+          <img src="/static/avatar/badge1.png" class="draggable" draggable="true" data-type="badge">
+          <img src="/static/avatar/badge2.png" class="draggable" draggable="true" data-type="badge">         
+        </div>
+        <div class="drag-here">Drag here</div>
+      </div>
+  </div>
+  <div class="col-md-4 mb-4">
+
+      <div class="avatar-canvas" id="avatar">
+        <img id="img-arms" style="max-width: 90%; height: auto; position: absolute; top: 300px; z-index: 1;">
+        <img id="img-head" style= "max-width: 50%; height: auto; position: absolute; top: 0px; left: 90px; z-index: 9;">
+        <img id="img-face" style= "max-width: 50%; height: auto; position: absolute; top: 130px; left: 140px; z-index: 9;">
+        <img id="img-body" style= "max-width: 50%; height: auto; position: absolute; top: 280px; left: 90px; z-index: 9;">
+        <img id="img-legs" style= "max-width: 70%; height: auto; position: absolute; top: 490px; left: 45px; z-index: 9;">
+        <img id="img-badge" style= "max-width: 20%; height: auto; position: absolute; top: 350px; left: 150px; z-index: 12;">
+      </div>
+      <div class="button-row">
+        <button id="save-btn">Save Avatar Image</button>
+        <button id="clear-btn">Clear Avatar</button>
+      </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  
+    const avatarCanvas = document.getElementById('avatar');
+    const avatar = {
+      head: document.getElementById('img-head'),
+      body: document.getElementById('img-body'),
+      legs: document.getElementById('img-legs'),
+      arms: document.getElementById('img-arms'),
+      badge: document.getElementById('img-badge'),
+      face: document.getElementById('img-face')
+    };
+
+    document.querySelectorAll('.draggable').forEach(img => {
+      img.addEventListener('dragstart', e => {
+       
+        e.dataTransfer.setData("type", e.target.dataset.type);
+        e.dataTransfer.setData("src", e.target.src);
+      });
+    });
+
+    document.querySelectorAll('.drop-zone').forEach(zone => {
+      zone.addEventListener('dragover', e => e.preventDefault());
+      zone.addEventListener('drop', e => {       
+        e.preventDefault();
+        const type = e.dataTransfer.getData("type");
+        const src = e.dataTransfer.getData("src");
+
+
+        if (zone.dataset.target === type) {
+            
+          if (type === 'overlay') {
+           
+            const overlayImg = document.createElement('img');
+            overlayImg.src = src;
+            overlayImg.className = 'overlay-draggable';          
+            overlayImg.style.top = '400px';
+            overlayImg.style.left = '600px';         
+           
+            overlayImg.setAttribute('draggable', 'true');
+
+            overlayImg.addEventListener('dragstart', e => {
+              e.dataTransfer.setData('offsetX', e.offsetX);
+              e.dataTransfer.setData('offsetY', e.offsetY);
+              e.dataTransfer.setData('elementId', '');
+              e.dataTransfer.setData('imgSrc', src);
+            });
+
+            overlayImg.addEventListener('dragend', e => {
+              overlayImg.style.left = `${e.pageX - avatarCanvas.offsetLeft - 25}px`;
+              overlayImg.style.top = `${e.pageY - avatarCanvas.offsetTop - 25}px`;
+            });
+
+            avatarCanvas.appendChild(overlayImg);
+          } else {            
+            avatar[type].src = src;
+          }
+        }
+      });
+    });
+
+    document.getElementById('save-btn').addEventListener('click', () => {
+      html2canvas(avatarCanvas).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'my-avatar.png';
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    });
+
+    document.getElementById('clear-btn').addEventListener('click', () => {
+      // Clear base parts
+      avatar.head.src = '';
+      avatar.body.src = '';
+      avatar.legs.src = '';
+      avatar.arms.src = '';
+      avatar.badge.src = '';
+      avatar.face.src = '';
+
+      // Remove all overlay elements
+      document.querySelectorAll('.overlay-draggable').forEach(el => el.remove());
+    });
+  </script>
+{% endblock %}

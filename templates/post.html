@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <article class="mx-auto" style="max-width: 768px;">
+    <h1 class="mb-2">{{ post.title }}</h1>
+    {% if post.category == 'Insights' %}
+      <span style="width: 60px;" class="badge bg-warning me-2 mb-2">{{ post.category }}</span>
+     
+    {% endif %}              
+    {% if post.category == 'Certificate' %}
+      <span style="width: 60px;" class="badge bg-info me-2 mb-2">{{ post.category }}</span>
+    {% endif %}
+    {% if post.category == 'Tools' %}
+      <span style="width: 60px;" class="badge bg-success me-2 mb-2">{{ post.category }}</span>
+    {% endif %}
+    {% if post.category == 'Skills' %}
+      <span style="width: 60px;" class="badge bg-dark me-2 mb-2">{{ post.category }}</span>
+    {% endif %}
+    {% if not post.category %}
+      <span class="badge bg-secondary mb-2">Uncategorized</span>
+    {% endif %}
+    {% if post.sub_category %}
+       <i class="fas fa-arrow-right"></i>&nbsp;&nbsp;<span style="width: 100px;" class="badge bg-secondary me-2 mb-2">{{ post.sub_category }}</span>
+    {% endif %}
+    <p class="text-muted"><br/>Created on {{ post.create_date.strftime('%B %d, %Y') }}  {% if post.update_date %} <br/> Last updated on {{ post.update_date.strftime('%B %d, %Y') }}
+    {% endif %}</p>
+   
+    {{ post.tags | safe }}
+    
+    {% if post.cover_image %}
+    <img src="{{ post.cover_image }}" alt="cover" class="img-fluid rounded mb-4">
+    {% endif %}
+    <div class="markdown-content">
+    {{ post.html | safe }}    
+    </div>
+    <div class="mt-4">
+    <a href="{{ url_for('blog') }}" class="btn btn-primary">Back to blog</a>
+    </div>
+    </article>
+{% endblock %}
+
+
+
+
+{% block scripts %}
+<script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+<script>  
+    document.addEventListener("DOMContentLoaded", function() {
+    // Select all tables in the document
+    const tables = document.querySelectorAll('table');
+    
+    tables.forEach(table => {
+      // Add MDBootstrap classes to the table
+      table.classList.add('table', 'table-striped', 'table-hover');
+    });
+  });
+</script>
+
+{% if post.graphml_included %}
+<script>
+    fetch("/graph-data/{{ post.graphml_file }}/")
+      .then(res => res.json())
+      .then(graph => {
+        const width = 600, height = 400;
+        const svg = d3.select("#graph").append("svg")
+          .attr("width", width).attr("height", height);
+
+        const simulation = d3.forceSimulation(graph.nodes)
+          .force("link", d3.forceLink(graph.links).id(d => d.id).distance(100))
+          .force("charge", d3.forceManyBody().strength(-300))
+          .force("center", d3.forceCenter(width / 2, height / 2));
+
+        const link = svg.append("g")
+          .selectAll("line")
+          .data(graph.links).enter().append("line");
+
+        const node = svg.append("g")
+          .selectAll("circle")
+          .data(graph.nodes).enter().append("circle")
+          .attr("r", 10)
+          .call(d3.drag()
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended));
+
+        const label = svg.append("g")
+          .selectAll("text")
+          .data(graph.nodes).enter().append("text")
+          .text(d => d.id);
+
+        simulation.on("tick", () => {
+          link.attr("x1", d => d.source.x)
+              .attr("y1", d => d.source.y)
+              .attr("x2", d => d.target.x)
+              .attr("y2", d => d.target.y);
+          node.attr("cx", d => d.x)
+              .attr("cy", d => d.y);
+          label.attr("x", d => d.x + 12)
+               .attr("y", d => d.y + 3);
+        });
+
+        function dragstarted(event, d) {
+          if (!event.active) simulation.alphaTarget(0.3).restart();
+          d.fx = d.x; d.fy = d.y;
+        }
+        function dragged(event, d) {
+          d.fx = event.x; d.fy = event.y;
+        }
+        function dragended(event, d) {
+          if (!event.active) simulation.alphaTarget(0);
+          d.fx = null; d.fy = null;
+        }
+      });
+  </script>
+  {% endif %}
+
+  {% if post.chart_included  %}
+ <script>
+    d3.selectAll("svg.chart").each(function() {
+      const svg = d3.select(this);
+      const type = svg.attr("data-type");
+      const data = JSON.parse(svg.attr("data-json"));
+      const width = +svg.attr("width"),
+            height = +svg.attr("height"),
+            margin = {top: 20, right: 20, bottom: 40, left: 40};
+
+      if (type === "bar") {
+        const x = d3.scaleBand()
+          .domain(data.map(d => d.label))
+          .range([margin.left, width - margin.right])
+          .padding(0.2);
+
+        const y = d3.scaleLinear()
+          .domain([0, d3.max(data, d => d.value)]).nice()
+          .range([height - margin.bottom, margin.top]);
+
+        svg.append("g")
+          .selectAll("rect")
+          .data(data)
+          .enter().append("rect")
+            .attr("class", "bar")
+            .attr("x", d => x(d.label))
+            .attr("y", d => y(d.value))
+            .attr("height", d => y(0) - y(d.value))
+            .attr("width", x.bandwidth());
+
+        svg.append("g")
+          .attr("transform", `translate(0,${height - margin.bottom})`)
+          .call(d3.axisBottom(x));
+
+        svg.append("g")
+          .attr("transform", `translate(${margin.left},0)`)
+          .call(d3.axisLeft(y));
+      }
+
+      else if (type === "pie") {
+        const radius = Math.min(width, height) / 2;
+        const g = svg.append("g")
+          .attr("transform", `translate(${width / 2},${height / 2})`);
+
+        const color = d3.scaleOrdinal(d3.schemeCategory10);
+        const pie = d3.pie().value(d => d.value);
+        const arc = d3.arc().innerRadius(0).outerRadius(radius);
+
+        g.selectAll("path")
+          .data(pie(data))
+          .enter().append("path")
+          .attr("d", arc)
+          .attr("fill", d => color(d.data.label));
+
+        g.selectAll("text")
+          .data(pie(data))
+          .enter().append("text")
+          .attr("transform", d => `translate(${arc.centroid(d)})`)
+          .text(d => d.data.label);
+      }
+
+      else if (type === "line") {
+        const x = d3.scalePoint()
+          .domain(data.map(d => d.label))
+          .range([margin.left, width - margin.right]);
+
+        const y = d3.scaleLinear()
+          .domain([0, d3.max(data, d => d.value)]).nice()
+          .range([height - margin.bottom, margin.top]);
+
+        const line = d3.line()
+          .x(d => x(d.label))
+          .y(d => y(d.value));
+
+        svg.append("path")
+          .datum(data)
+          .attr("fill", "none")
+          .attr("stroke", "steelblue")
+          .attr("stroke-width", 2)
+          .attr("d", line);
+
+        svg.append("g")
+          .attr("transform", `translate(0,${height - margin.bottom})`)
+          .call(d3.axisBottom(x));
+
+        svg.append("g")
+          .attr("transform", `translate(${margin.left},0)`)
+          .call(d3.axisLeft(y));
+
+        svg.selectAll("circle")
+          .data(data)
+          .enter().append("circle")
+            .attr("cx", d => x(d.label))
+            .attr("cy", d => y(d.value))
+            .attr("r", 4)
+            .attr("fill", "red");
+      }
+    });
+  </script>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,23 @@
+ <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+            <a class="navbar-brand" href="/pwa/home"><img src="{{ url_for('static', filename='img/website/logo.jpg') }}" alt="Larminium Logo" style="max-height: 50px;"> Larminium</a>
+            <button
+            data-mdb-collapse-init
+            class="navbar-toggler"
+            type="button"
+            data-mdb-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            >
+            <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">                   
+                    <li class="nav-item"><a class="nav-link {% if request.endpoint == 'pwa' %}active{% endif %}" href="/pwa/home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.endpoint == 'pwa_page1' %}active{% endif %}" href="/pwa/page1">Page 1</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.endpoint == 'pwa_page2' %}active{% endif %}" href="/pwa/page2">Page 2</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>

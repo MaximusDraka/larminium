@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Projects - Larminium{% endblock %}
+
+{% block content %}
+
+<div class="text-center mb-5">
+  <h1 class="display-5 fw-bold">Projects</h1>
+  <p class="lead text-muted">Main topics for exploration and development.</p>
+</div>
+
+
+<div class="row mb-5">
+  <div class="col-md-4 mb-4">
+    <div class="card h-100 shadow-3">
+      <div class="card-body d-flex flex-column">        
+        <img src="{{ url_for('static', filename='img/website/poc.jpg') }}" class="img-fluid shadow-4-strong mb-5 mx-auto" alt="POC Project">
+        <p class="card-text">Learn new technologies and integrations.</p>
+        <hr class="my-4">
+        <p><a href="{{ url_for('project_detail_poc') }}" class="btn btn-primary disabled">Website</a></p>
+        <p><a href="{{ url_for('project_detail_poc') }}" class="btn btn-primary disabled">Progressive Web App</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-4">
+    <div class="card h-100 shadow-3">
+      <div class="card-body d-flex flex-column">        
+        <img src="{{ url_for('static', filename='img/website/data.jpg') }}" class="img-fluid shadow-4-strong mb-5 mx-auto" alt="Data Project">
+        <p class="card-text">GIS and data investigations.</p>
+        <hr class="my-4">
+        <p><a href="{{ url_for('project_detail_data') }}" class="btn btn-primary disabled">Network graph with D3.js</a></p>
+        <p><a href="{{ url_for('project_detail_data') }}" class="btn btn-primary disabled">Leaflet.js</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-4">
+    <div class="card h-100 shadow-3">
+     <div class="card-body d-flex flex-column">
+        <img src="{{ url_for('static', filename='img/website/ai.jpg') }}" class="img-fluid shadow-4-strong mb-5 mx-auto" alt="AI Project">
+        <p class="card-text">AI experiments and implementations.</p>
+         <hr class="my-4">
+        <p><a href="{{ url_for('project_detail_ai') }}" class="btn btn-primary disabled">SkillSkeleton - Dissertation</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
