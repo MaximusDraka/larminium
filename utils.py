@@ -11,11 +11,12 @@ import json
 import emoji as emoji
 from pymdownx import emoji as em
 from functools import lru_cache
+from data import Post
 
-from app import Post, app
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 CONTENT_DIR = os.path.join(APP_ROOT, "content")
+HUMOR_DIR = os.path.join(APP_ROOT, "static", "img", "humor")
 
 
 def _discover_markdown_files() -> List[str]:
@@ -187,11 +188,10 @@ def load_all_posts() -> List[Post]:
 
 
 @lru_cache(maxsize=1)
-def load_all_humor() -> List[str]:
-    humor_folder = os.path.join(app.static_folder, "img", "humor")
+def load_all_humor() -> List[str]:    
     images = [
         f"img/humor/{filename}"
-        for filename in os.listdir(humor_folder)
+        for filename in os.listdir(HUMOR_DIR)
             if filename.lower().endswith((".png", ".jpg", ".jpeg", ".webp", ".gif"))
     ]
     images.sort()  # Optional: sort alphabetically

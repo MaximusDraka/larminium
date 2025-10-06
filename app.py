@@ -1,8 +1,6 @@
 from __future__ import annotations
 import json
 import os
-
-from dataclasses import dataclass
 import datetime
 from plantuml import PlantUML
 from flask import Flask, abort, jsonify, render_template, request, send_from_directory, url_for
@@ -18,6 +16,7 @@ import dotenv
 from flask_mail import Mail, Message
 from forms import UserForm, NameForm, SearchForm, form_template
 import utils
+from flask_sqlalchemy import SQLAlchemy
 
 dotenv.load_dotenv()
 
@@ -35,30 +34,19 @@ app.config['RECAPTCHA_PRIVATE_KEY'] = os.getenv("RECAPTCHA_PRIVATE_KEY")  # from
 app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 
-#Add database configuration
-from db import db, User
 
 mail = Mail(app)
 plantuml = PlantUML(url="https://www.plantuml.com/plantuml/svg/")
 
-
-@dataclass
-class Post:
-    slug: str
-    title: str
-    create_date: datetime
-    update_date: datetime
-    summary: str | None
-    cover_image: str | None
-    tags: list[str]
-    category: str | None
-    sub_category: str | None
-    html: str # rendered HTML content
-    raw_markdown: str # original markdown (optional if you need it)
-    graphml_included: bool # whether a GraphML file is included
-    graphml_file: str | None # the name of the GraphML file if included
-    chart_included: bool # whether a chart is included
-
+db = SQLAlchemy(app)
+class User(db.Model):    
+    id = db.Column(db.Integer, primary_key=True) 
+    name = db.Column(db.String(150), nullable=False)
+    email = db.Column(db.String(150), unique=True, nullable=False)
+    date_created = db.Column(db.DateTime, default=datetime.datetime.now())
+    
+    def __repr__(self):
+        return f'<Name {self.name}>'
 
 @app.route("/")
 def index():
