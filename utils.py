@@ -1,6 +1,5 @@
 from typing import List, Optional
 import re
-
 import frontmatter
 from datetime import datetime
 import os
@@ -13,8 +12,10 @@ import emoji as emoji
 from pymdownx import emoji as em
 from functools import lru_cache
 
-from app import CONTENT_DIR, Post, app
+from app import Post, app
 
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+CONTENT_DIR = os.path.join(APP_ROOT, "content")
 
 
 def _discover_markdown_files() -> List[str]:

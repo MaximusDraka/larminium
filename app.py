@@ -21,9 +21,6 @@ import utils
 
 dotenv.load_dotenv()
 
-APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-CONTENT_DIR = os.path.join(APP_ROOT, "content")
-
 app = Flask(__name__)
 
 # SMTP config
